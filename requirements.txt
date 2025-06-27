@@ -1,0 +1,1 @@
+customtkinter>=5.2.2 # O la versión más reciente en pip

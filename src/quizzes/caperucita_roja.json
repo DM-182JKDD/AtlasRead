@@ -1,0 +1,28 @@
+{
+    "book_id": 2,
+    "book_title": "Caperucita Roja",
+    "questions": [
+        {
+            "id": 1,
+            "question": "¿Qué lleva Caperucita Roja a casa de su abuela?",
+            "options": [
+                "a) Flores y una cesta",
+                "b) Pan y leche",
+                "c) Pastel y vino",
+                "d) Frutas"
+            ],
+            "correct_answer": 3
+        },
+        {
+            "id": 2,
+            "question": "¿Quién se come a la abuela y a Caperucita?",
+            "options": [
+                "a) El leñador",
+                "b) Un oso",
+                "c) El lobo feroz",
+                "d) Un cazador"
+            ],
+            "correct_answer": 3
+        }
+    ]
+}
