@@ -1,7 +1,10 @@
 # src/config.py
 
+import os
+import sys
+
 APP_NAME = "AtlasRead"
-DB_NAME = "atlasread.db"
+DB_NAME = "atlasread.db" # Nombre del archivo de la base de datos
 
 # Configuraciones de velocidad de lectura (palabras por minuto)
 # Estas son estimaciones y pueden ajustarse
@@ -24,8 +27,33 @@ WPM_EXPECTED = {
     'default': (150, 250)
 }
 
-# Ruta a los libros de muestra
-BOOKS_DIRECTORY = "src/books_content"
+# --- FUNCIÓN CENTRAL PARA DETERMINAR LA RUTA BASE ---
+def get_base_path():
+    """
+    Determina la ruta base de la aplicación.
+    Si se ejecuta como un ejecutable de PyInstaller, usa sys._MEIPASS o el directorio del ejecutable.
+    Si se ejecuta como script, usa la raíz del proyecto.
+    """
+    if getattr(sys, 'frozen', False): # True si se ejecuta como ejecutable de PyInstaller
+        # sys._MEIPASS es el directorio temporal donde PyInstaller extrae los datos.
+        # Si no está disponible (ej. modo onefile y PyInstaller no lo usa así),
+        # usamos el directorio del ejecutable (donde está AtlasRead.exe/AtlasRead).
+        return getattr(sys, '_MEIPASS', os.path.dirname(sys.executable))
+    else:
+        # En modo desarrollo (ejecutando con `python src/main.py`):
+        # __file__ es src/config.py
+        # os.path.dirname(__file__) es src/
+        # os.path.dirname(os.path.dirname(__file__)) es la raíz del proyecto (Atlasread/)
+        return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Ruta a los cuestionarios
-QUIZZES_DIRECTORY = "src/quizzes" # Nueva línea
+# Rutas a los recursos, construidas usando la función get_base_path
+# Estas rutas ya son absolutas y válidas tanto en desarrollo como en el ejecutable.
+DATABASE_PATH = os.path.join(get_base_path(), DB_NAME)
+BOOKS_DIRECTORY = os.path.join(get_base_path(), "src", "books_content") # Los libros están en src/books_content
+QUIZZES_DIRECTORY = os.path.join(get_base_path(), "src", "quizzes") # Los quizzes están en src/quizzes
+
+# (Opcional, para depuración)
+# print(f"DEBUG - Ruta base de la aplicación: {get_base_path()}")
+# print(f"DEBUG - Ruta de la base de datos: {DATABASE_PATH}")
+# print(f"DEBUG - Ruta del directorio de libros: {BOOKS_DIRECTORY}")
+# print(f"DEBUG - Ruta del directorio de cuestionarios: {QUIZZES_DIRECTORY}")

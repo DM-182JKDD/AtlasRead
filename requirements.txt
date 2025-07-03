@@ -1,1 +1,11 @@
-customtkinter>=5.2.2 # O la versión más reciente en pip
+altgraph==0.17.4
+charset-normalizer==3.4.2
+CTkMessagebox==2.7
+customtkinter==5.2.2
+darkdetect==0.8.0
+packaging==25.0
+pillow==11.2.1
+pyinstaller==6.14.1
+pyinstaller-hooks-contrib==2025.5
+reportlab==4.4.2
+setuptools==80.9.0

@@ -1,0 +1,28 @@
+{
+    "book_id": 1,
+    "book_title": "El Patito Feo",
+    "questions": [
+        {
+            "id": 1,
+            "question": "¿De qué color era el patito al nacer?",
+            "options": [
+                "a) Blanco",
+                "b) Amarillo",
+                "c) Gris y feo",
+                "d) Negro"
+            ],
+            "correct_answer": 3
+        },
+        {
+            "id": 2,
+            "question": "¿En qué se convierte el patito feo al final de la historia?",
+            "options": [
+                "a) Un ganso",
+                "b) Un pavo real",
+                "c) Un hermoso cisne",
+                "d) Una gallina"
+            ],
+            "correct_answer": 3
+        }
+    ]
+}

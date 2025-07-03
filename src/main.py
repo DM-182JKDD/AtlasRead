@@ -15,4 +15,3 @@ if __name__ == "__main__":
     # Crear y ejecutar la aplicación GUI
     app = AtlasReadApp(db_manager, app_logic)
     app.mainloop()
-

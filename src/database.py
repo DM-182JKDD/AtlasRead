@@ -1,27 +1,24 @@
-# src/database.py
-
 import sqlite3
 import os
-from src.config import DB_NAME, BOOKS_DIRECTORY
+# import sys # <--- ¡ELIMINAR O COMENTAR ESTA LÍNEA! Ya no es necesaria aquí.
+
+# Importar las rutas ya resueltas desde config.py
+from src.config import DB_NAME, BOOKS_DIRECTORY, DATABASE_PATH
+
 
 class DatabaseManager:
     def __init__(self):
-        self.db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', DB_NAME)
-        print(f"Conectado a la base de datos: {self.db_path}") # Añadir para depuración
+        # Ahora, self.db_path simplemente usa la ruta ya resuelta de config.py
+        self.db_path = DATABASE_PATH
+
+        print(f"Conectado a la base de datos: {self.db_path}")
         self._create_tables()
-        self._insert_sample_books() # Inserta libros de ejemplo al iniciar
+        self._insert_sample_books()  # Esta función crea/inserta libros si no existen
 
     def _get_connection(self):
-        """
-        Establece una nueva conexión a la base de datos para cada operación.
-        La conexión se cerrará en el método que la obtiene.
-        """
         conn = sqlite3.connect(self.db_path)
-        conn.row_factory = sqlite3.Row # Para acceder a las columnas por nombre
+        conn.row_factory = sqlite3.Row
         return conn
-
-    # No hay un método 'close' a nivel de la clase DatabaseManager
-    # porque las conexiones se cierran inmediatamente después de cada operación.
 
     def _create_tables(self):
         conn = self._get_connection()
@@ -54,42 +51,57 @@ class DatabaseManager:
                 wpm REAL,
                 age_appropriateness_score REAL,
                 performance_rating TEXT,
-                quiz_score REAL DEFAULT NULL, -- Nuevo campo para la puntuación del quiz
+                quiz_score REAL DEFAULT NULL,
                 FOREIGN KEY (user_id) REFERENCES users (id),
                 FOREIGN KEY (book_id) REFERENCES books (id)
             )
         """)
         conn.commit()
         conn.close()
-        print("Tablas verificadas/creadas exitosamente.") # Añadir para depuración
+        print("Tablas verificadas/creadas exitosamente.")
 
     def _insert_sample_books(self):
+        # Asegúrate de que los archivos de contenido de los libros existen ANTES de intentar insertarlos.
+        # Esto es especialmente importante para que el _get_word_count_from_file no falle.
         books_to_insert = [
-            {"title": "El Patito Feo", "author": "Hans Christian Andersen", "min_age": 6, "max_age": 8, "content_filename": "patito_feo.txt"},
-            {"title": "Caperucita Roja", "author": "Hermanos Grimm", "min_age": 6, "max_age": 8, "content_filename": "caperucita_roja.txt"},
-            {"title": "El Gato con Botas", "author": "Charles Perrault", "min_age": 7, "max_age": 9, "content_filename": "gato_botas.txt"},
-            {"title": "Alicia en el País de las Maravillas", "author": "Lewis Carroll", "min_age": 9, "max_age": 12, "content_filename": "alicia_maravillas.txt"},
-            {"title": "El Principito", "author": "Antoine de Saint-Exupéry", "min_age": 10, "max_age": 14, "content_filename": "principito.txt"},
-            {"title": "Veinte Mil Leguas de Viaje Submarino", "author": "Julio Verne", "min_age": 12, "max_age": 99, "content_filename": "veinte_mil_leguas.txt"},
-            {"title": "Don Quijote de la Mancha (Adaptación)", "author": "Miguel de Cervantes", "min_age": 14, "max_age": 99, "content_filename": "don_quijote.txt"},
-            {"title": "Orgullo y Prejuicio", "author": "Jane Austen", "min_age": 16, "max_age": 99, "content_filename": "orgullo_prejuicio.txt"}
+            {"title": "El Patito Feo", "author": "Hans Christian Andersen", "min_age": 6, "max_age": 8,
+             "content_filename": "patito_feo.txt"},
+            {"title": "Caperucita Roja", "author": "Hermanos Grimm", "min_age": 6, "max_age": 8,
+             "content_filename": "caperucita_roja.txt"},
+            {"title": "El Gato con Botas", "author": "Charles Perrault", "min_age": 7, "max_age": 9,
+             "content_filename": "gato_botas.txt"},
+            {"title": "Alicia en el País de las Maravillas", "author": "Lewis Carroll", "min_age": 9, "max_age": 12,
+             "content_filename": "alicia_maravillas.txt"},
+            {"title": "El Principito", "author": "Antoine de Saint-Exupéry", "min_age": 10, "max_age": 14,
+             "content_filename": "principito.txt"},
+            {"title": "Veinte Mil Leguas de Viaje Submarino", "author": "Julio Verne", "min_age": 12, "max_age": 99,
+             "content_filename": "veinte_mil_leguas.txt"},
+            {"title": "Don Quijote de la Mancha (Adaptación)", "author": "Miguel de Cervantes", "min_age": 14,
+             "max_age": 99, "content_filename": "don_quijote.txt"},
+            {"title": "Orgullo y Prejuicio", "author": "Jane Austen", "min_age": 16, "max_age": 99,
+             "content_filename": "orgullo_prejuicio.txt"}
         ]
 
         conn = self._get_connection()
         cursor = conn.cursor()
 
         for book_data in books_to_insert:
-            content_path = os.path.join(BOOKS_DIRECTORY, book_data["content_filename"])
-            cursor.execute("SELECT id FROM books WHERE content_path = ?", (content_path,))
+            # content_path_relative es la ruta tal como la quieres almacenar en la BD.
+            # Esta ruta DEBE coincidir con cómo se estructuran los archivos de libros DENTRO del paquete.
+            # Según tu .spec, los copias a 'src/books_content/'.
+            content_path_relative = os.path.join("src", "books_content", book_data["content_filename"])
+
+            cursor.execute("SELECT id FROM books WHERE content_path = ?", (content_path_relative,))
             existing_book = cursor.fetchone()
 
             if not existing_book:
-                word_count = self._get_word_count_from_file(content_path)
+                word_count = self._get_word_count_from_file(
+                    book_data["content_filename"])  # Pasamos solo el nombre del archivo
                 cursor.execute(
                     """INSERT INTO books (title, author, min_age, max_age, content_path, word_count)
                        VALUES (?, ?, ?, ?, ?, ?)""",
                     (book_data["title"], book_data["author"], book_data["min_age"],
-                     book_data["max_age"], content_path, word_count)
+                     book_data["max_age"], content_path_relative, word_count)  # Guarda la ruta relativa
                 )
                 print(f"Libro '{book_data['title']}' insertado.")
             else:
@@ -97,17 +109,19 @@ class DatabaseManager:
         conn.commit()
         conn.close()
 
-    def _get_word_count_from_file(self, file_path):
-        abs_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', file_path)
-        if not os.path.exists(abs_file_path):
-            print(f"Advertencia: Archivo de contenido no encontrado para conteo de palabras: {abs_file_path}")
-            return 0
+    def _get_word_count_from_file(self, filename):
+        # BOOKS_DIRECTORY ya es la ruta ABSOLUTA correcta definida en config.py
+        full_file_path = os.path.join(BOOKS_DIRECTORY, filename)
+
+        if not os.path.exists(full_file_path):
+            print(f"Advertencia: Archivo de contenido no encontrado para conteo de palabras: {full_file_path}")
+            return 0  # Si el archivo no existe, el conteo de palabras es 0
         try:
-            with open(abs_file_path, 'r', encoding='utf-8') as f:
+            with open(full_file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
                 return len(content.split())
         except Exception as e:
-            print(f"Error al leer el archivo para conteo de palabras {abs_file_path}: {e}")
+            print(f"Error al leer el archivo para conteo de palabras {full_file_path}: {e}")
             return 0
 
     def add_user(self, age):
@@ -159,7 +173,8 @@ class DatabaseManager:
         print(f"Sesión de lectura iniciada. ID: {session_id}")
         return session_id
 
-    def finish_reading_session(self, session_id, duration_seconds, wpm, age_appropriateness_score, performance_rating, quiz_score=None):
+    def finish_reading_session(self, session_id, duration_seconds, wpm, age_appropriateness_score, performance_rating,
+                               quiz_score=None):
         conn = self._get_connection()
         cursor = conn.cursor()
         cursor.execute(

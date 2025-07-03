@@ -4,6 +4,7 @@ import os
 import json
 from src.config import WPM_EXPECTED, BOOKS_DIRECTORY, QUIZZES_DIRECTORY
 
+
 class AppLogic:
     def __init__(self, db_manager):
         self.db_manager = db_manager
@@ -11,10 +12,12 @@ class AppLogic:
     def get_recommended_books(self, age):
         return self.db_manager.get_recommended_books(age)
 
-    def read_book_content(self, relative_path):
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        project_root = os.path.join(base_dir, '..')
-        full_path = os.path.join(project_root, relative_path)
+    def read_book_content(self, relative_path_from_project_root):
+        # relative_path_from_project_root es la ruta almacenada en la DB (ej. "src/books_content/patito_feo.txt")
+        # BOOKS_DIRECTORY ya es la ruta ABSOLUTA base para tus libros.
+        # Entonces, solo necesitas obtener el nombre del archivo y unirlo a BOOKS_DIRECTORY.
+        filename = os.path.basename(relative_path_from_project_root)
+        full_path = os.path.join(BOOKS_DIRECTORY, filename)
 
         if not os.path.exists(full_path):
             print(f"Error: El archivo de contenido no fue encontrado en: {full_path}")
@@ -32,13 +35,11 @@ class AppLogic:
         if not book_info:
             return None
 
-        content_filename = os.path.basename(book_info['content_path'])
-        quiz_filename = os.path.splitext(content_filename)[0] + ".json"
-        quiz_relative_path = os.path.join(QUIZZES_DIRECTORY, quiz_filename)
+        content_filename = os.path.basename(book_info['content_path'])  # Obtener solo el nombre del archivo del libro
+        quiz_filename = os.path.splitext(content_filename)[0] + ".json"  # Construir el nombre del archivo del quiz
 
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        project_root = os.path.join(base_dir, '..')
-        full_quiz_path = os.path.join(project_root, quiz_relative_path)
+        # QUIZZES_DIRECTORY ya es la ruta ABSOLUTA base para tus quizzes
+        full_quiz_path = os.path.join(QUIZZES_DIRECTORY, quiz_filename)
 
         if not os.path.exists(full_quiz_path):
             print(f"No se encontró cuestionario para {book_info['title']} en {full_quiz_path}")
@@ -71,23 +72,16 @@ class AppLogic:
         elif actual_wpm < min_wpm:
             age_appropriateness_score = max(0, (actual_wpm / min_wpm) * 100)
             performance_rating = "Necesita mejorar (Lento)"
-        else: # actual_wpm > max_wpm
-            # Modificación aquí: Cambiado de "Muy Rápido (Posible sobre-lectura)" a solo "Rápido"
+        else:  # actual_wpm > max_wpm
             if actual_wpm > max_wpm * 1.2:
-                 age_appropriateness_score = 100.0 - ((actual_wpm - max_wpm) / max_wpm) * 20
-                 performance_rating = "Rápido" # <--- CAMBIADO
+                age_appropriateness_score = 100.0 - ((actual_wpm - max_wpm) / max_wpm) * 20
+                performance_rating = "Rápido"
             else:
                 age_appropriateness_score = 100.0
                 performance_rating = "Rápido"
         return actual_wpm, age_appropriateness_score, performance_rating
 
     def evaluate_quiz(self, quiz_data, user_answers):
-        """
-        Evalúa las respuestas del usuario a un cuestionario.
-        quiz_data: Diccionario con la estructura del quiz (preguntas y respuestas correctas).
-        user_answers: Diccionario con las respuestas del usuario (pregunta_id: respuesta_usuario).
-        Retorna: número de respuestas correctas, número total de preguntas.
-        """
         correct_count = 0
         total_questions = len(quiz_data['questions'])
 
