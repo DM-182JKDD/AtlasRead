@@ -1,0 +1,61 @@
+{
+    "book_id": 5,
+    "book_title": "Ciencia Maya",
+    "questions": [
+        {
+            "id": 1,
+            "question": "¿Cuáles son algunos de los conocimientos ancestrales que aún se conservan entre los pueblos mayas actuales?",
+            "options": [
+                "a) Agricultura, medicina natural y astronomía",
+                "b) Ingeniería genética y robótica",
+                "c) Minería y metalurgia avanzada",
+                "d) Astronáutica y navegación espacial"
+            ],
+            "correct_answer": 1
+        },
+        {
+            "id": 2,
+            "question": "¿Qué caracteriza a las comunidades mayas actuales?",
+            "options": [
+                "a) Han abandonado completamente sus tradiciones",
+                "b) Conservan sus lenguas, tejidos y creencias",
+                "c) Solo hablan español y han adoptado culturas extranjeras",
+                "d) Se dedican exclusivamente al turismo"
+            ],
+            "correct_answer": 2
+        },
+        {
+            "id": 3,
+            "question": "¿Cuántas personas se identifican actualmente como descendientes de los mayas?",
+            "options": [
+                "a) Más de un millón",
+                "b) Más de tres millones",
+                "c) Más de seis millones",
+                "d) Más de diez millones"
+            ],
+            "correct_answer": 3
+        },
+        {
+            "id": 4,
+            "question": "¿Cuál fue uno de los factores que afectó a las ciudades mayas en los siglos IX y X?",
+            "options": [
+                "a) Una guerra nuclear",
+                "b) Un colapso ecológico y social",
+                "c) La invención del internet",
+                "d) Una invasión extraterrestre"
+            ],
+            "correct_answer": 2
+        },
+        {
+            "id": 5,
+            "question": "¿La cultura maya desapareció tras la conquista española?",
+            "options": [
+                "a) Sí, no quedan rastros de su lengua ni costumbres",
+                "b) No, aunque perdió relevancia, sigue viva en comunidades actuales",
+                "c) Sí, todos los mayas emigraron a Europa",
+                "d) No, pero solo sobrevivieron sus construcciones"
+            ],
+            "correct_answer": 2
+        }
+    ]
+}

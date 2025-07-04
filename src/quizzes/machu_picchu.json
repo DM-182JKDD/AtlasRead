@@ -1,0 +1,61 @@
+{
+    "book_id": 3,
+    "book_title": "Machu Picchu",
+    "questions": [
+        {
+            "id": 1,
+            "question": "¿En qué país se encuentra Machu Picchu?",
+            "options": [
+                "a) Bolivia",
+                "b) Ecuador",
+                "c) Perú",
+                "d) Colombia"
+            ],
+            "correct_answer": 3
+        },
+        {
+            "id": 2,
+            "question": "¿A cuántos metros sobre el nivel del mar se encuentra Machu Picchu?",
+            "options": [
+                "a) 1,200 metros",
+                "b) 2,400 metros",
+                "c) 3,000 metros",
+                "d) 4,500 metros"
+            ],
+            "correct_answer": 2
+        },
+        {
+            "id": 3,
+            "question": "¿Quién ordenó la construcción de Machu Picchu?",
+            "options": [
+                "a) Huayna Cápac",
+                "b) Pachacútec",
+                "c) Atahualpa",
+                "d) Viracocha"
+            ],
+            "correct_answer": 2
+        },
+        {
+            "id": 4,
+            "question": "¿Qué función principal tuvo Machu Picchu según algunas teorías?",
+            "options": [
+                "a) Una fortaleza militar",
+                "b) Un centro ceremonial, agrícola y astronómico",
+                "c) Una prisión inca",
+                "d) Un mercado comercial"
+            ],
+            "correct_answer": 2
+        },
+        {
+            "id": 5,
+            "question": "¿Cuál es el significado del nombre 'Machu Picchu' en quechua?",
+            "options": [
+                "a) Montaña sagrada",
+                "b) Ciudad perdida",
+                "c) Montaña vieja",
+                "d) Tierra elevada"
+            ],
+            "correct_answer": 3
+        }
+    ]
+}

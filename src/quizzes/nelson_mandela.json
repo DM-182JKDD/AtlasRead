@@ -1,0 +1,61 @@
+{
+    "book_id": 4,
+    "book_title": "Nelson Mandela",
+    "questions": [
+        {
+            "id": 1,
+            "question": "¿En qué año falleció Nelson Mandela?",
+            "options": [
+                "a) 2010",
+                "b) 2013",
+                "c) 2016",
+                "d) 2020"
+            ],
+            "correct_answer": 2
+        },
+        {
+            "id": 2,
+            "question": "¿Por cuántos años estuvo encarcelado Nelson Mandela?",
+            "options": [
+                "a) 15 años",
+                "b) 18 años",
+                "c) 27 años",
+                "d) 30 años"
+            ],
+            "correct_answer": 3
+        },
+        {
+            "id": 3,
+            "question": "¿Por qué movimiento político era conocido Nelson Mandela?",
+            "options": [
+                "a) El Partido Nacional",
+                "b) El Congreso Nacional Africano (ANC)",
+                "c) El Movimiento de Liberación Negra",
+                "d) La Liga Antiapartheid"
+            ],
+            "correct_answer": 2
+        },
+        {
+            "id": 4,
+            "question": "¿Qué ideología defendió Nelson Mandela a lo largo de su vida?",
+            "options": [
+                "a) Fascismo",
+                "b) Capitalismo",
+                "c) Apartheid",
+                "d) No violencia y reconciliación"
+            ],
+            "correct_answer": 4
+        },
+        {
+            "id": 5,
+            "question": "¿Cuál fue el primer cargo público que ocupó Nelson Mandela después de salir de prisión?",
+            "options": [
+                "a) Presidente de Sudáfrica",
+                "b) Primer Ministro",
+                "c) Líder del partido comunista",
+                "d) Alcalde de Johannesburgo"
+            ],
+            "correct_answer": 1
+        }
+    ]
+}

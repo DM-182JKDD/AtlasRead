@@ -1,0 +1,61 @@
+{
+    "book_id": 2,
+    "book_title": "La Revolución Industrial",
+    "questions": [
+        {
+            "id": 1,
+            "question": "¿En qué país comenzó la Revolución Industrial?",
+            "options": [
+                "a) Alemania",
+                "b) Estados Unidos",
+                "c) Inglaterra",
+                "d) Francia"
+            ],
+            "correct_answer": 3
+        },
+        {
+            "id": 2,
+            "question": "¿Qué invento fue fundamental para la mecanización de la industria textil?",
+            "options": [
+                "a) El telégrafo",
+                "b) La máquina de vapor",
+                "c) La locomotora",
+                "d) El ferrocarril"
+            ],
+            "correct_answer": 2
+        },
+        {
+            "id": 3,
+            "question": "¿Cuál fue una consecuencia social importante de la Revolución Industrial?",
+            "options": [
+                "a) Mejora inmediata del salario de todos los trabajadores",
+                "b) Aumento de poder político de los campesinos",
+                "c) Formación del proletariado industrial",
+                "d) Desaparición de las ciudades industriales"
+            ],
+            "correct_answer": 3
+        },
+        {
+            "id": 4,
+            "question": "¿Qué ideología surgió como crítica al sistema capitalista durante este periodo?",
+            "options": [
+                "a) Liberalismo",
+                "b) Nacionalismo",
+                "c) Socialismo",
+                "d) Fascismo"
+            ],
+            "correct_answer": 3
+        },
+        {
+            "id": 5,
+            "question": "¿Cuál fue uno de los principales impactos ambientales de la Revolución Industrial?",
+            "options": [
+                "a) Disminución de la contaminación del aire",
+                "b) Uso intensivo de combustibles fósiles y aumento de la contaminación",
+                "c) Mejora de los ecosistemas naturales",
+                "d) Protección de bosques y ríos por parte del Estado"
+            ],
+            "correct_answer": 2
+        }
+    ]
+}

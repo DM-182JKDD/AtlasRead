@@ -1,0 +1,61 @@
+{
+    "book_id": 7,
+    "book_title": "El Renacimiento fue...",
+    "questions": [
+        {
+            "id": 1,
+            "question": "¿En qué país se originó el Renacimiento?",
+            "options": [
+                "a) Francia",
+                "b) Inglaterra",
+                "c) Italia",
+                "d) España"
+            ],
+            "correct_answer": 3
+        },
+        {
+            "id": 2,
+            "question": "¿Cuál es una característica principal del periodo renacentista?",
+            "options": [
+                "a) Regreso al pensamiento místico y religioso",
+                "b) Interés por el humanismo y el mundo clásico",
+                "c) Abandono del arte y la literatura",
+                "d) Dominio absoluto de la Iglesia"
+            ],
+            "correct_answer": 2
+        },
+        {
+            "id": 3,
+            "question": "¿Quién es considerado uno de los máximos representantes del arte renacentista?",
+            "options": [
+                "a) Leonardo da Vinci",
+                "b) Van Gogh",
+                "c) Picasso",
+                "d) Andy Warhol"
+            ],
+            "correct_answer": 1
+        },
+        {
+            "id": 4,
+            "question": "¿Qué movimiento filosófico influyó fuertemente en el Renacimiento?",
+            "options": [
+                "a) Escolástica",
+                "b) Humanismo",
+                "c) Positivismo",
+                "d) Existencialismo"
+            ],
+            "correct_answer": 2
+        },
+        {
+            "id": 5,
+            "question": "¿Cuál de estos autores pertenece al Renacimiento?",
+            "options": [
+                "a) Miguel de Cervantes",
+                "b) Julio Verne",
+                "c) Charles Dickens",
+                "d) Franz Kafka"
+            ],
+            "correct_answer": 1
+        }
+    ]
+}

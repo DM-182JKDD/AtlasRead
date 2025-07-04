@@ -1,0 +1,61 @@
+{
+    "book_id": 1,
+    "book_title": "La Revolución Francesa",
+    "questions": [
+        {
+            "id": 1,
+            "question": "¿En qué año comenzó la Revolución Francesa?",
+            "options": [
+                "a) 1789",
+                "b) 1776",
+                "c) 1804",
+                "d) 1799"
+            ],
+            "correct_answer": 1
+        },
+        {
+            "id": 2,
+            "question": "¿Qué evento simbolizó el inicio de la Revolución Francesa?",
+            "options": [
+                "a) La firma de la Declaración de Independencia",
+                "b) La toma de la Bastilla",
+                "c) La ejecución de Luis XVI",
+                "d) La proclamación de la República"
+            ],
+            "correct_answer": 2
+        },
+        {
+            "id": 3,
+            "question": "¿Cuál era la principal desigualdad social antes de la revolución?",
+            "options": [
+                "a) El clero y la nobleza pagaban impuestos altos",
+                "b) Solo el tercer estado tenía representación política",
+                "c) El tercer estado soportaba casi toda la carga tributaria",
+                "d) Todos los estamentos tenían los mismos privilegios"
+            ],
+            "correct_answer": 3
+        },
+        {
+            "id": 4,
+            "question": "¿Qué ideología influyó fuertemente en las ideas de libertad e igualdad de la revolución?",
+            "options": [
+                "a) El romanticismo",
+                "b) El iluminismo",
+                "c) El positivismo",
+                "d) El escolasticismo"
+            ],
+            "correct_answer": 2
+        },
+        {
+            "id": 5,
+            "question": "¿Cómo se llamó la etapa más violenta de la revolución liderada por Robespierre?",
+            "options": [
+                "a) Directorio",
+                "b) Consulado",
+                "c) Reinado del Terror",
+                "d) Imperio napoleónico"
+            ],
+            "correct_answer": 3
+        }
+    ]
+}

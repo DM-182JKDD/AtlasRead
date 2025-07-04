@@ -1,0 +1,61 @@
+{
+    "book_id": 6,
+    "book_title": "La Civilización Maya",
+    "questions": [
+        {
+            "id": 1,
+            "question": "¿Dónde se desarrolló la civilización maya?",
+            "options": [
+                "a) En el norte de Sudamérica",
+                "b) En Mesopotamia",
+                "c) En Mesoamérica (actual México, Guatemala, Honduras, etc.)",
+                "d) En el norte de África"
+            ],
+            "correct_answer": 3
+        },
+        {
+            "id": 2,
+            "question": "¿En qué siglos entraron en crisis muchas ciudades mayas?",
+            "options": [
+                "a) Siglo V y VI",
+                "b) Siglo VII y VIII",
+                "c) Siglo IX y X",
+                "d) Siglo XI y XII"
+            ],
+            "correct_answer": 3
+        },
+        {
+            "id": 3,
+            "question": "¿Cuál es una de las características más destacadas de la civilización maya?",
+            "options": [
+                "a) Su dominio del hierro",
+                "b) Su sistema de escritura y matemáticas avanzadas",
+                "c) Su uso temprano de la electricidad",
+                "d) Su control del comercio marítimo mundial"
+            ],
+            "correct_answer": 2
+        },
+        {
+            "id": 4,
+            "question": "¿Cómo describirías la situación actual de la cultura maya?",
+            "options": [
+                "a) Totalmente extinguida",
+                "b) Dominante en toda América Latina",
+                "c) Aún viva en comunidades que preservan su legado",
+                "d) Solo presente en museos"
+            ],
+            "correct_answer": 3
+        },
+        {
+            "id": 5,
+            "question": "¿Cuál NO es una contribución cultural de los mayas?",
+            "options": [
+                "a) Un calendario muy preciso",
+                "b) Avanzados sistemas de irrigación",
+                "c) El uso de computadoras",
+                "d) Pirámides y templos arquitectónicos"
+            ],
+            "correct_answer": 3
+        }
+    ]
+}
