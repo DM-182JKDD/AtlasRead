@@ -1,11 +1,18 @@
 # -*- mode: python ; coding: utf-8 -*-
+import glob
 
+# Archivos .txt en src/books_content
+txt_files = glob.glob('src/books_content/*.txt')
+# Archivos .json en src/quizzes
+json_files = glob.glob('src/quizzes/*.json')
+
+datas = [(f, 'src/books_content') for f in txt_files] + [(f, 'src/quizzes') for f in json_files]
 
 a = Analysis(
     ['src/main.py'],
     pathex=[],
     binaries=[],
-    datas=[('src', 'src')],
+    datas=datas,
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -14,6 +21,7 @@ a = Analysis(
     noarchive=False,
     optimize=0,
 )
+
 pyz = PYZ(a.pure)
 
 exe = EXE(
@@ -21,7 +29,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='main',
+    name='AtlasRead',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -33,6 +41,7 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
 )
+
 coll = COLLECT(
     exe,
     a.binaries,
@@ -40,5 +49,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='main',
+    name='AtlasRead',
 )

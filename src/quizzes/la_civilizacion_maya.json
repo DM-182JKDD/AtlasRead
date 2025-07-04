@@ -1,0 +1,28 @@
+{
+    "book_id": 1,
+    "book_title": "La Civilizacion maya",
+    "questions": [
+        {
+            "id": 1,
+            "question": "¿Qué aspecto de la civilización maya demuestra su capacidad de relacionar ciencia y religión de forma compleja?",
+            "options": [
+                "a) El uso del cacao como moneda",
+                "b) Amarillo",
+                "c) Gris y feo",
+                "d) Negro"
+            ],
+            "correct_answer": 3
+        },
+        {
+            "id": 2,
+            "question": "¿En qué se convierte el patito feo al final de la historia?",
+            "options": [
+                "a) Un ganso",
+                "b) Un pavo real",
+                "c) Un hermoso cisne",
+                "d) Una gallina"
+            ],
+            "correct_answer": 3
+        }
+    ]
+}
